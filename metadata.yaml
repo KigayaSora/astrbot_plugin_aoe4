@@ -1,0 +1,39 @@
+name: astrbot_plugin_aoe4
+display_name: 帝国时代4战绩查询
+short_desc: 查询 AoE4 玩家战绩、隐藏分、对局与文明胜率
+desc: |
+  基于 AoE4World API（aoe4world.com）的《帝国时代4》(Age of Empires IV) 数据查询插件，
+  以图片卡片形式返回查询结果，适用于 QQ / QQ 官方机器人等平台。
+
+  指令组 /aoe4（别名 /帝国）：
+
+  - /aoe4 战绩 <玩家名>：各模式天梯段位、分数、胜率、排名（别名：段位、rank）
+  - /aoe4 隐藏分 <玩家名>：各模式 ELO/MMR 汇总，含当前 / 历史最高 / 近7天 / 近30天
+    （别名：elo、mmr、分）
+  - /aoe4 对局 <玩家名> [数量]：最近 N 场对局的胜负、文明、地图、时长、分数变化
+    （别名：比赛、match、games，默认 8 场）
+  - /aoe4 单局 <玩家名> [序号]：单场对局详情，双方队伍完整玩家名单（别名：局、详情、game）
+  - /aoe4 胜率 [模式] [段位]：文明胜率排行，支持排位/匹配 1v1~4v4 与青铜~征服者段位过滤
+    （别名：文明、civ）
+  - /aoe4 帮助：用法说明
+
+  特点：
+  - 全中文输出、竖版图片卡片适配手机查看
+  - 内置 ≤1 req/s 限速、429 退避重试与响应缓存，避免触发接口限流
+  - 宽松解析，兼容接口 v0 结构变动
+version: 1.1.0
+author: KigayaSora
+repo: https://github.com/KigayaSora/astrbot_plugin_aoe4
+astrbot_version: ">=4.0.0"
+support_platforms:
+  - aiocqhttp
+  - qq_official
+tags:
+  - game
+  - 游戏
+  - 帝国时代
+  - aoe4
+  - 查询
+  - 战绩
+  - 排位
+  - 文明胜率

@@ -1,0 +1,39 @@
+<div style="width:560px;zoom:2.2857;background:#f5f7fa;padding:8px;font-family:'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif;color:#1f2933;">
+  <div style="background:#ffffff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.08);overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#2f6fed,#5b8def);padding:18px 22px;display:flex;align-items:center;gap:14px;">
+      {% if avatar %}<img src="{{ avatar }}" style="width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,.7);" />{% endif %}
+      <div>
+        <div style="font-size:24px;font-weight:700;color:#fff;">{{ flag }} {{ name }}</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.85);margin-top:2px;">天梯段位战绩{% if country %} · {{ country }}{% endif %}</div>
+      </div>
+    </div>
+    <div style="padding:14px 22px 6px;">
+      {% for m in modes %}
+      <div style="display:flex;align-items:center;padding:11px 0;border-bottom:1px solid #eef1f5;gap:10px;">
+        <div style="width:92px;font-size:15px;font-weight:600;">{{ m.mode }}</div>
+        <div class="tier {{ m.tier_class }}" style="min-width:64px;text-align:center;font-size:12px;font-weight:700;padding:3px 8px;border-radius:8px;">{{ m.tier_zh }}</div>
+        <div style="width:58px;font-size:18px;font-weight:700;color:#2f6fed;">{{ m.rating }}</div>
+        <div style="flex:1;font-size:12px;color:#6b7280;">
+          {% if m.win_rate is not none %}胜率 {{ m.win_rate }}%{% else %}胜率 -{% endif %}
+          · {{ m.wins }}胜{{ m.losses }}负
+          {% if m.rank %} · 排名 #{{ m.rank }}{% endif %}
+          {% if m.streak > 0 %} · <span style="color:#16a34a;">{{ m.streak }}连胜</span>{% endif %}
+          {% if m.streak < 0 %} · <span style="color:#dc2626;">{{ -m.streak }}连败</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+      {% if not modes %}<div style="padding:20px 0;text-align:center;color:#9ca3af;">本赛季暂无天梯记录</div>{% endif %}
+    </div>
+    <div style="padding:10px 22px 14px;font-size:11px;color:#9ca3af;">数据来源 aoe4world.com{% if site_url %} · {{ site_url }}{% endif %}</div>
+  </div>
+</div>
+<style>
+html,body{margin:0;padding:0;background:#f5f7fa;}
+.tier-unranked{background:#e5e7eb;color:#6b7280;}
+.tier-bronze{background:#f7e3cf;color:#9a5b1e;}
+.tier-silver{background:#e8edf3;color:#5b6b7f;}
+.tier-gold{background:#fdeec8;color:#a07508;}
+.tier-platinum{background:#d9f2ef;color:#0f766e;}
+.tier-diamond{background:#dde7fd;color:#1d4ed8;}
+.tier-conqueror{background:#f8dde0;color:#b91c1c;}
+</style>

@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 部署/测试脚本（含服务器凭据，不随插件发布）
+scripts/
+
+# 本地预览产物
+preview/
+
+# 系统
+.DS_Store
+Thumbs.db

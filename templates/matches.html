@@ -1,0 +1,29 @@
+<div style="width:560px;zoom:2.2857;background:#f5f7fa;padding:8px;font-family:'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif;color:#1f2933;">
+  <div style="background:#ffffff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.08);overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#0d9488,#2dd4bf);padding:18px 22px;">
+      <div style="font-size:24px;font-weight:700;color:#fff;">{{ name }} 的最近对局</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.85);margin-top:2px;">共 {{ count }} 场</div>
+    </div>
+    <div style="padding:6px 22px;">
+      {% for g in matches %}
+      <div style="display:flex;align-items:center;padding:11px 0;border-bottom:1px solid #eef1f5;gap:10px;">
+        <div style="width:44px;text-align:center;font-size:13px;font-weight:700;padding:4px 0;border-radius:8px;
+          {% if g.result == 'win' %}background:#dcfce7;color:#16a34a;
+          {% elif g.result == 'loss' %}background:#fee2e2;color:#dc2626;
+          {% else %}background:#e5e7eb;color:#6b7280;{% endif %}">{{ g.result_zh }}</div>
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:600;">{{ g.civ }} · {{ g.map }}</div>
+          <div style="font-size:12px;color:#6b7280;margin-top:2px;">{{ g.mode }} · {{ g.duration }} · {{ g.time_ago }}</div>
+        </div>
+        <div style="font-size:16px;font-weight:700;
+          {% if g.diff is not none and g.diff > 0 %}color:#16a34a;
+          {% elif g.diff is not none and g.diff < 0 %}color:#dc2626;
+          {% else %}color:#9ca3af;{% endif %}">{{ g.diff_text }}</div>
+      </div>
+      {% endfor %}
+      {% if not matches %}<div style="padding:20px 0;text-align:center;color:#9ca3af;">暂无对局记录</div>{% endif %}
+    </div>
+    <div style="padding:10px 22px 14px;font-size:11px;color:#9ca3af;">数据来源 aoe4world.com</div>
+  </div>
+</div>
+<style>html,body{margin:0;padding:0;background:#f5f7fa;}</style>

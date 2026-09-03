@@ -1,0 +1,36 @@
+{
+  "timeout": {
+    "description": "AoE4World 请求超时时间（秒）",
+    "type": "int",
+    "default": 10,
+    "hint": "网络较差时可适当调大"
+  },
+  "cache_ttl": {
+    "description": "接口响应缓存时长（秒）",
+    "type": "int",
+    "default": 120,
+    "hint": "建议 60-300，避免触发限流"
+  },
+  "default_matches": {
+    "description": "对局指令默认展示场数",
+    "type": "int",
+    "default": 8,
+    "hint": "范围 1-20"
+  },
+  "civ_rows": {
+    "description": "文明胜率卡展示条数",
+    "type": "int",
+    "default": 25,
+    "hint": "0 表示显示全部文明"
+  },
+  "user_agent": {
+    "description": "请求 AoE4World 时使用的 User-Agent",
+    "type": "string",
+    "default": "AstrBotAoE4Plugin/1.0 (https://github.com/AstrBotDevs/AstrBot)"
+  },
+  "max_retry": {
+    "description": "429/5xx 时的最大重试次数",
+    "type": "int",
+    "default": 2
+  }
+}
